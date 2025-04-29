@@ -228,7 +228,7 @@ final class Auth extends UserManager {
 	 * @see confirmEmail
 	 * @see confirmEmailAndSignIn
 	 */
-	public function register($email, $password, $username = null, callable $callback = null) {
+	public function register($email, $password, $username = null, ?callable $callback = null) {
 		$this->throttle([ 'enumerateUsers', $this->getIpAddress() ], 1, (60 * 60), 75);
 		$this->throttle([ 'createNewAccount', $this->getIpAddress() ], 1, (60 * 60 * 12), 5, true);
 
@@ -269,7 +269,7 @@ final class Auth extends UserManager {
 	 * @see confirmEmail
 	 * @see confirmEmailAndSignIn
 	 */
-	public function registerWithUniqueUsername($email, $password, $username = null, callable $callback = null) {
+	public function registerWithUniqueUsername($email, $password, $username = null, ?callable $callback = null) {
 		$this->throttle([ 'enumerateUsers', $this->getIpAddress() ], 1, (60 * 60), 75);
 		$this->throttle([ 'createNewAccount', $this->getIpAddress() ], 1, (60 * 60 * 12), 5, true);
 
